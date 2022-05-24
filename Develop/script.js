@@ -10,11 +10,8 @@ This project generates a password based on supplied user requirements:
 - Then generate the password using the criteria selected
 - Display the password in an alert or on the page
 */
-var upperCaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var lowerCaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
-var special = ["!", "#", "$", "^", "&", "*"]
 
+var global_array = [];
 function generatePassword() {
   debugger;
   var passLength = promptLengthOfPassword()
@@ -22,10 +19,17 @@ function generatePassword() {
   var lowCase = promptLowerCase()
   var numCharacter = promptNumericCharacters()
   var specCharacter = promptSpecialCharacters()
+  var character = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "#", "$", "^", "&", "*"];
   var generatePassword = ""
-
+  var characters_length = character.length;
+  for (var i = 0; i < passLength; i++) {
+    generatePassword += character.charAt(Math.floor(Math.random() *
+      characters_length));
+  }
+  console.log("random string result", generatePassword);
   return generatePassword
 }
+
 
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
