@@ -10,6 +10,22 @@ This project generates a password based on supplied user requirements:
 - Then generate the password using the criteria selected
 - Display the password in an alert or on the page
 */
+var upperCaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowerCaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+var special = ["!", "#", "$", "^", "&", "*"]
+
+function generatePassword() {
+  debugger;
+  var passLength = promptLengthOfPassword()
+  var uppCase = promptUpperCase()
+  var lowCase = promptLowerCase()
+  var numCharacter = promptNumericCharacters()
+  var specCharacter = promptSpecialCharacters()
+  var generatePassword = ""
+
+  return generatePassword
+}
 
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
@@ -30,19 +46,40 @@ function writePassword() {
  *
  * @return {string} User response
  */
+
 function promptLengthOfPassword() {
-// How many characters is the length of your password? Must be between 8 and 128 characters.
-  // Type your response in the box below
+  var response = window.prompt("How many characters is the length of your password? Must be between 8 and 128 characters");
+  var isNotInRange = (response < 8) || (response > 128)
+  if (isNotInRange) {
+    window.alert("WRONG")
+    return promptLengthOfPassword()
+  } else {
+    return response
+  }
 }
 
 /**
- * Prompt user for use of upper and lower case characters
+ * Prompt user for use of upper case characters
  *
- * @return {{ upperCase: boolean, lowerCase: boolean }} User selection
+ * @return {string} true or false user wants upper case
  */
-function promptUpperLowerCase() {
-// Would you like to use uppercase and/or lowercase characters?
-// Please select at least one of the 2 checkboxes below.
+
+function promptUpperCase() {
+  return window.confirm("Would you like to use uppercase characters?");
+
+// Please select confirm.
+}
+
+/**
+ * Prompt user for use of lower case characters
+ *
+ * @return {boolean} true or false user wants lower case
+ */
+
+function promptLowerCase() {
+  return window.confirm("Would you like to use lower case characters?");
+
+// Please select confirm
 }
 
 /**
@@ -52,8 +89,9 @@ function promptUpperLowerCase() {
  */
 
 function promptNumericCharacters() {
-// Would you like to use numeric characters?
-// Check the box for yes
+  return window.confirm("Would you like to use numeric characters?");
+
+  // Please select confirm
 }
 
 /**
@@ -63,21 +101,11 @@ function promptNumericCharacters() {
  */
 
 function promptSpecialCharacters() {
-// Would you like to use special characters?
-// Check the box for yes
+  return window.confirm("Would you like to use numeric characters?");
+
+// Please select confirm
 }
 
-/**
- * Validate user response from promptLengthOfPassword()
- *
- * @param {string} userInput Raw user response from promptLengthOfPassword()
- * @return {boolean} Response is valid or not
- */
-
-function validateResponseLengthOfPassword(userInput) {
-// Validate that the user has responded with a number value
-// Validates that the length of the password is a minimum of 8 and a maximum of 128 characters
-}
 
 
 
