@@ -12,6 +12,10 @@ This project generates a password based on supplied user requirements:
 */
 
 var global_array = [];
+var uppCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowCase = "abcdefghijklmnopqrstuvwxyz";
+var numCharacter = "0123456789";
+var specCharacter = "~!@#$%^&*()_+{}:?><;.,";
 function generatePassword() {
   debugger;
   var passLength = promptLengthOfPassword()
@@ -19,13 +23,13 @@ function generatePassword() {
   var lowCase = promptLowerCase()
   var numCharacter = promptNumericCharacters()
   var specCharacter = promptSpecialCharacters()
-  var character = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "#", "$", "^", "&", "*"];
+  let character = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789~!@#$%^&*()_+{}:?><;.,";
   var generatePassword = ""
   var characters_length = character.length;
   for (var i = 0; i < passLength; i++) {
-    generatePassword += character.charAt(Math.floor(Math.random() *
-      characters_length));
-  }
+    const random_index= Math.floor(Math.random() * characters_length);
+  generatePassword = generatePassword + character[random_index];
+}
   console.log("random string result", generatePassword);
   return generatePassword
 }
@@ -70,8 +74,12 @@ function promptLengthOfPassword() {
 
 function promptUpperCase() {
   return window.confirm("Would you like to use uppercase characters?");
-
-// Please select confirm.
+  // Please select confirm
+  if (promptUpperCase) {
+    character += uppCase
+  }else{
+    return false
+  }
 }
 
 /**
@@ -82,8 +90,10 @@ function promptUpperCase() {
 
 function promptLowerCase() {
   return window.confirm("Would you like to use lower case characters?");
-
-// Please select confirm
+  // Please select confirm
+  if (promptLowerCase) {
+    character += lowCase
+  }
 }
 
 /**
@@ -94,8 +104,10 @@ function promptLowerCase() {
 
 function promptNumericCharacters() {
   return window.confirm("Would you like to use numeric characters?");
-
   // Please select confirm
+  if (promptNumericCharacters) {
+    character += uppCase
+  }
 }
 
 /**
@@ -105,9 +117,11 @@ function promptNumericCharacters() {
  */
 
 function promptSpecialCharacters() {
-  return window.confirm("Would you like to use numeric characters?");
-
-// Please select confirm
+  return window.confirm("Would you like to use any special characters?");
+  // Please select confirm
+  if (promptSpecialCharacters) {
+    character += uppCase
+  }
 }
 
 
