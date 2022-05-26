@@ -34,7 +34,6 @@ function generatePassword() {
   return generatePassword
 }
 
-
 // Get references to the #generate element
 const generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
@@ -43,7 +42,6 @@ generateBtn.addEventListener("click", writePassword);
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
 
   passwordText.value = password;
 
@@ -75,7 +73,7 @@ function promptLengthOfPassword() {
 function promptUpperCase() {
   return window.confirm("Would you like to use uppercase characters?");
   // Please select confirm
-  if (promptUpperCase) {
+  if (uppCase) {
     character += uppCase
   }else{
     return false
@@ -91,7 +89,7 @@ function promptUpperCase() {
 function promptLowerCase() {
   return window.confirm("Would you like to use lower case characters?");
   // Please select confirm
-  if (promptLowerCase) {
+  if (lowCase) {
     character += lowCase
   }
 }
@@ -105,8 +103,8 @@ function promptLowerCase() {
 function promptNumericCharacters() {
   return window.confirm("Would you like to use numeric characters?");
   // Please select confirm
-  if (promptNumericCharacters) {
-    character += uppCase
+  if (numCharacter) {
+    character += numCharacter
   }
 }
 
@@ -119,7 +117,7 @@ function promptNumericCharacters() {
 function promptSpecialCharacters() {
   return window.confirm("Would you like to use any special characters?");
   // Please select confirm
-  if (promptSpecialCharacters) {
+  if (specCharacter) {
     character += uppCase
   }
 }
